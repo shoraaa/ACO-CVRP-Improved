@@ -1,0 +1,2 @@
+name,tiny-comma,depot,0,0,customer,1,0,0,1,1,1,capacity,10,demand,4,6,5,end
+['name', 'tiny-list', 'depot', 0, 0, 'customer', 1, 0, 0, 1, 1, 1, 'demand', 4, 6, 5, 'capacity', 10, 'end']

@@ -1,0 +1,510 @@
+{
+  "date": "2026-10-09",
+  "compiler": "GCC 16.2.1",
+  "architecture": "x86_64",
+  "flags": [
+    "-O3",
+    "-DNDEBUG",
+    "-fopenmp",
+    "-fno-math-errno",
+    "-ffp-contract=off"
+  ],
+  "original_working_source_sha256": {
+    "src/cvrp.cpp": "0d681123b350ae916e11f3be4dad71eea31ae96a19059a450cd17c632e3a6ec5",
+    "src/cvrp.h": "04249868b3f670de73972991c3e5a467f86c0eac4b72b087ce7ad4277e9a6b49",
+    "src/instance.cpp": "c86b7b91087d50515c1f78d58113808800571d41e64ccdf8f5f603270b28bbdf",
+    "src/instance.h": "0a60ebaa36946e466382e4d6f01961495d8606120260524134a8c52fb5c6587e",
+    "src/main.cpp": "64f6f4f411d04ed7bc0727705c173931f762377ffa0b89146d0cdeeba65b7ee6",
+    "src/kd_tree.h": "0c94800294b2542cb17017bfc1b23e6d981f82c2e9a1824b30c4c82b3f0205ce"
+  },
+  "comparison_fields": [
+    "cost",
+    "route",
+    "iterations",
+    "routes_used",
+    "planning_capacity"
+  ],
+  "configurations": [
+    {
+      "args": [
+        "--nodes",
+        "100",
+        "--seed",
+        "1",
+        "--iterations",
+        "30",
+        "--ants",
+        "16",
+        "--threads",
+        "4"
+      ],
+      "cost": 15.85834599,
+      "exact_route_match": true
+    },
+    {
+      "args": [
+        "--nodes",
+        "100",
+        "--seed",
+        "42",
+        "--iterations",
+        "30",
+        "--ants",
+        "16",
+        "--threads",
+        "4"
+      ],
+      "cost": 17.39757919,
+      "exact_route_match": true
+    },
+    {
+      "args": [
+        "--nodes",
+        "100",
+        "--seed",
+        "1234",
+        "--iterations",
+        "30",
+        "--ants",
+        "16",
+        "--threads",
+        "4"
+      ],
+      "cost": 15.15905857,
+      "exact_route_match": true
+    },
+    {
+      "args": [
+        "--nodes",
+        "1000",
+        "--seed",
+        "1",
+        "--iterations",
+        "30",
+        "--ants",
+        "16",
+        "--threads",
+        "4"
+      ],
+      "cost": 38.87763977,
+      "exact_route_match": true
+    },
+    {
+      "args": [
+        "--nodes",
+        "1000",
+        "--seed",
+        "42",
+        "--iterations",
+        "30",
+        "--ants",
+        "16",
+        "--threads",
+        "4"
+      ],
+      "cost": 39.59680939,
+      "exact_route_match": true
+    },
+    {
+      "args": [
+        "--nodes",
+        "1000",
+        "--seed",
+        "1234",
+        "--iterations",
+        "30",
+        "--ants",
+        "16",
+        "--threads",
+        "4"
+      ],
+      "cost": 36.10541153,
+      "exact_route_match": true
+    },
+    {
+      "args": [
+        "--nodes",
+        "10000",
+        "--seed",
+        "1",
+        "--iterations",
+        "30",
+        "--ants",
+        "16",
+        "--threads",
+        "4"
+      ],
+      "cost": 110.6454773,
+      "exact_route_match": true
+    },
+    {
+      "args": [
+        "--nodes",
+        "10000",
+        "--seed",
+        "42",
+        "--iterations",
+        "30",
+        "--ants",
+        "16",
+        "--threads",
+        "4"
+      ],
+      "cost": 111.8780518,
+      "exact_route_match": true
+    },
+    {
+      "args": [
+        "--nodes",
+        "10000",
+        "--seed",
+        "1234",
+        "--iterations",
+        "30",
+        "--ants",
+        "16",
+        "--threads",
+        "4"
+      ],
+      "cost": 101.7773285,
+      "exact_route_match": true
+    },
+    {
+      "args": [
+        "--nodes",
+        "300",
+        "--seed",
+        "42",
+        "--iterations",
+        "30",
+        "--ants",
+        "16",
+        "--threads",
+        "2",
+        "--no-merge"
+      ],
+      "cost": 43.23225784,
+      "exact_route_match": true
+    },
+    {
+      "args": [
+        "--nodes",
+        "300",
+        "--seed",
+        "42",
+        "--iterations",
+        "30",
+        "--ants",
+        "16",
+        "--threads",
+        "2",
+        "--greedy-start"
+      ],
+      "cost": 43.94610977,
+      "exact_route_match": true
+    },
+    {
+      "args": [
+        "--nodes",
+        "300",
+        "--seed",
+        "42",
+        "--iterations",
+        "30",
+        "--ants",
+        "16",
+        "--threads",
+        "2",
+        "--no-spatial-order"
+      ],
+      "cost": 43.56763077,
+      "exact_route_match": true
+    },
+    {
+      "args": [
+        "--nodes",
+        "300",
+        "--seed",
+        "42",
+        "--iterations",
+        "30",
+        "--ants",
+        "16",
+        "--threads",
+        "2",
+        "--classic-mmas"
+      ],
+      "cost": 43.09266663,
+      "exact_route_match": true
+    },
+    {
+      "args": [
+        "--nodes",
+        "300",
+        "--seed",
+        "42",
+        "--iterations",
+        "30",
+        "--ants",
+        "16",
+        "--threads",
+        "2",
+        "--no-local-search"
+      ],
+      "cost": 53.83815765,
+      "exact_route_match": true
+    },
+    {
+      "args": [
+        "--nodes",
+        "300",
+        "--seed",
+        "42",
+        "--iterations",
+        "30",
+        "--ants",
+        "16",
+        "--threads",
+        "2",
+        "--no-initial-ls",
+        "--basic-neighborhood",
+        "--new-edges",
+        "12",
+        "--candidates",
+        "32"
+      ],
+      "cost": 44.12358475,
+      "exact_route_match": true
+    },
+    {
+      "args": [
+        "--nodes",
+        "300",
+        "--seed",
+        "42",
+        "--iterations",
+        "30",
+        "--ants",
+        "16",
+        "--threads",
+        "2",
+        "--alpha",
+        "1.5"
+      ],
+      "cost": 43.49590302,
+      "exact_route_match": true
+    },
+    {
+      "args": [
+        "--nodes",
+        "300",
+        "--seed",
+        "42",
+        "--iterations",
+        "30",
+        "--ants",
+        "16",
+        "--threads",
+        "2",
+        "--fixed-steps",
+        "8"
+      ],
+      "cost": 43.42435455,
+      "exact_route_match": true
+    },
+    {
+      "args": [
+        "--nodes",
+        "1000",
+        "--seed",
+        "42",
+        "--iterations",
+        "30",
+        "--ants",
+        "16",
+        "--threads",
+        "1"
+      ],
+      "cost": 39.59680939,
+      "exact_route_match": true
+    },
+    {
+      "args": [
+        "--nodes",
+        "1000",
+        "--seed",
+        "42",
+        "--iterations",
+        "30",
+        "--ants",
+        "16",
+        "--threads",
+        "2"
+      ],
+      "cost": 39.59680939,
+      "exact_route_match": true
+    },
+    {
+      "args": [
+        "--nodes",
+        "1000",
+        "--iterations",
+        "50",
+        "--seed",
+        "42",
+        "--threads",
+        "4"
+      ],
+      "records": 1,
+      "costs": [
+        39.01290512
+      ],
+      "exact_route_match": true
+    },
+    {
+      "args": [
+        "--nodes",
+        "300",
+        "--seed",
+        "42",
+        "--iterations",
+        "30",
+        "--ants",
+        "16",
+        "--threads",
+        "2",
+        "--escape",
+        "2"
+      ],
+      "records": 1,
+      "costs": [
+        43.3065834
+      ],
+      "exact_route_match": true
+    },
+    {
+      "args": [
+        "--nodes",
+        "300",
+        "--seed",
+        "42",
+        "--iterations",
+        "30",
+        "--ants",
+        "16",
+        "--threads",
+        "2",
+        "--force-change",
+        "first"
+      ],
+      "records": 1,
+      "costs": [
+        43.12542343
+      ],
+      "exact_route_match": true
+    },
+    {
+      "args": [
+        "--nodes",
+        "300",
+        "--seed",
+        "42",
+        "--iterations",
+        "30",
+        "--ants",
+        "16",
+        "--threads",
+        "2",
+        "--force-change",
+        "all"
+      ],
+      "records": 1,
+      "costs": [
+        43.28312302
+      ],
+      "exact_route_match": true
+    },
+    {
+      "args": [
+        "--nodes",
+        "300",
+        "--seed",
+        "42",
+        "--iterations",
+        "30",
+        "--ants",
+        "16",
+        "--threads",
+        "2",
+        "--max-copy-run",
+        "2"
+      ],
+      "records": 1,
+      "costs": [
+        43.33307266
+      ],
+      "exact_route_match": true
+    },
+    {
+      "args": [
+        "--nodes",
+        "300",
+        "--seed",
+        "42",
+        "--iterations",
+        "30",
+        "--ants",
+        "16",
+        "--threads",
+        "2",
+        "--gbest-prob",
+        "0.2"
+      ],
+      "records": 1,
+      "costs": [
+        43.44849014
+      ],
+      "exact_route_match": true
+    },
+    {
+      "args": [
+        "--nodes",
+        "300",
+        "--seed",
+        "42",
+        "--iterations",
+        "30",
+        "--ants",
+        "16",
+        "--threads",
+        "2",
+        "--depot-heuristic"
+      ],
+      "records": 1,
+      "costs": [
+        43.10203934
+      ],
+      "exact_route_match": true
+    },
+    {
+      "args": [
+        "--dataset",
+        "data/CVRP/data/test_set/CVRPlib_scale_larger_than1000_Li_X_XXL_n14.txt",
+        "--limit",
+        "2",
+        "--iterations",
+        "10",
+        "--ants",
+        "16",
+        "--threads",
+        "4"
+      ],
+      "records": 2,
+      "costs": [
+        31747.44141,
+        34352.33984
+      ],
+      "exact_route_match": true
+    }
+  ]
+}

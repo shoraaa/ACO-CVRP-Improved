@@ -1,0 +1,57 @@
+cmake_minimum_required(VERSION 3.20)
+project(cvrp_aco VERSION 1.0.0 LANGUAGES CXX)
+
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_EXTENSIONS OFF)
+
+option(CVRP_NATIVE "Tune for the build machine's CPU (binaries may not be portable)" OFF)
+option(CVRP_BUILD_BENCHMARK "Build the synthetic throughput benchmark" OFF)
+option(CVRP_STRICT_REGRESSION "Check toolchain-specific exact trajectory hashes" OFF)
+
+find_package(OpenMP REQUIRED COMPONENTS CXX)
+add_library(cvrp src/cvrp.cpp src/instance.cpp)
+target_include_directories(cvrp PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/src)
+target_compile_features(cvrp PUBLIC cxx_std_17)
+target_link_libraries(cvrp PUBLIC OpenMP::OpenMP_CXX)
+if(CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
+  target_compile_options(cvrp PRIVATE -Wall -Wextra -Wpedantic
+    -fno-math-errno -ffp-contract=off)
+  if(CVRP_NATIVE)
+    target_compile_options(cvrp PRIVATE -march=native)
+  endif()
+elseif(CVRP_NATIVE)
+  message(FATAL_ERROR "CVRP_NATIVE requires a GCC- or Clang-compatible compiler")
+endif()
+
+add_executable(cvrp_solver src/main.cpp)
+target_link_libraries(cvrp_solver PRIVATE cvrp)
+
+include(CTest)
+if(BUILD_TESTING)
+  add_executable(cvrp_tests tests/test_solver.cpp)
+  target_link_libraries(cvrp_tests PRIVATE cvrp)
+  if(CVRP_STRICT_REGRESSION)
+    target_compile_definitions(cvrp_tests PRIVATE CVRP_STRICT_REGRESSION=1)
+  endif()
+  add_test(NAME cvrp_regression COMMAND cvrp_tests)
+  set_tests_properties(cvrp_regression PROPERTIES TIMEOUT 180)
+  add_test(NAME cvrp_cli COMMAND cvrp_solver --nodes 100 --iterations 10 --ants 8 --threads 2)
+  add_test(NAME cvrp_cli_plain COMMAND cvrp_solver
+    --input ${CMAKE_CURRENT_SOURCE_DIR}/examples/tiny.txt --iterations 10 --ants 8 --threads 2 --route)
+  add_test(NAME cvrp_cli_dataset COMMAND cvrp_solver
+    --dataset ${CMAKE_CURRENT_SOURCE_DIR}/examples/tiny-dataset.txt --limit 2 --iterations 10 --ants 8 --threads 2)
+  add_test(NAME cvrp_cli_zero_time COMMAND cvrp_solver
+    --input ${CMAKE_CURRENT_SOURCE_DIR}/examples/tiny.txt --time-limit 0 --threads 2 --route)
+  add_test(NAME cvrp_cli_invalid COMMAND cvrp_solver --iterations -1)
+  add_test(NAME cvrp_cli_conflicting_budgets COMMAND cvrp_solver --iterations 10 --time-limit 1)
+  set_tests_properties(cvrp_cli_invalid cvrp_cli_conflicting_budgets PROPERTIES WILL_FAIL TRUE)
+  add_executable(cvrp_library_example examples/library.cpp)
+  target_link_libraries(cvrp_library_example PRIVATE cvrp)
+  add_test(NAME cvrp_library_example COMMAND cvrp_library_example)
+endif()
+
+if(CVRP_BUILD_BENCHMARK)
+  add_executable(cvrp_benchmark tests/benchmark.cpp)
+  target_link_libraries(cvrp_benchmark PRIVATE cvrp)
+endif()
